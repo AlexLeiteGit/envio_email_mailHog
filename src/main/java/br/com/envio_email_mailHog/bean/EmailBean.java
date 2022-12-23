@@ -10,24 +10,28 @@ import br.com.envio_email_mailHog.dto.EmailLayout;
 import br.com.envio_email_mailHog.model.Email;
 import br.com.envio_email_mailHog.service.EmailService;
 
-@Named
+@Named("emailBean")
 @RequestScoped
 public class EmailBean implements Serializable{
 
 	private static final long serialVersionUID = 8305824041971521860L;
+	
+	private static final String DESTINATARIO = "alex.f.leite@gmail.com";
+	private static final String ASSUNTO = "Mudança de Senha";
 	
 	@Inject
 	private EmailService emailService;
 	
 	private String enviarEmail() {
 		emailService.enviar(montarEmail());
+		System.out.println("email enviado");
 		return null;
 	}
 	
 	private Email montarEmail() {
 		EmailLayout layout = new EmailLayout();
-		
-		return layout.montarEmailAdministrador("alex.f.leite@gmail.com", "Mudança de Senha Java");
+		System.out.println("email montado");
+		return layout.montarEmailAdministrador(DESTINATARIO, ASSUNTO);
 	}
 
 }
