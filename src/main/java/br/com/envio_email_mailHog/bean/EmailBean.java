@@ -22,13 +22,13 @@ public class EmailBean implements Serializable{
 	@Inject
 	private EmailService emailService;
 	
-	private String enviarEmail() {
+	public String enviarEmail() {
 		emailService.enviar(montarEmail());
 		System.out.println("email enviado");
 		return null;
 	}
 	
-	private Email montarEmail() {
+	public Email montarEmail() {
 		EmailLayout layout = new EmailLayout();
 		System.out.println("email montado");
 		return layout.montarEmailAdministrador(DESTINATARIO, ASSUNTO);
